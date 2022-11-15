@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revista</title>
+    <link rel="stylesheet" href="/styles/articulos.css">
+</head>
+<body>
+    <header>
+        <h1>Revista</h1>
+    </header>
+    <a class="boton_atras" href="secciones.html"> <!-- Botón de atrás -->
+        <img class="icono_atras" src="/assets/flecha-atras.png">
+    </a>
+    <div class="titulos">
+        <h3> Artículos </h3>
+        <div class="edicion"> 07/2021 </div> <!-- Edición actual - que se está consultando -->
+    </div>
+    <nav>
+        <ul class="lista_articulos"> <!-- Lista de artículos de la sección -->
+            <li class="articulo"> <!-- ítem - Artículo -->
+                <div class="titulo_articulo">
+                    <b> Actualidad </b> <!-- Título del artículo -->
+                    <button> <!-- opción - editar artículo -->
+                        <img class="icono" src="/assets/editar-1.png"/>
+                    </button>
+                    <button> <!-- opción - eliminar artículo -->
+                        <img class="icono" src="/assets/cerrar-1.png"/>
+                    </button>
+                </div>
+                <div class="descripcion_articulo"> <!-- Descripción del articulo -->
+                    <b>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor molestias nisi odit necessitatibus fugit ullam suscipit, impedit placeat nemo vitae voluptatum animi sequi eaque numquam quia, minima ipsam voluptate totam?
+                    </b>
+                </div>
+            </li>
+            <button class="agregar_articulo"> <!-- Botón de agregar artículo -->
+                <li>
+                    <img class="icono" src="/assets/agregar.png"/>
+                </li>
+            </button>
+        </ul>
+    </nav>
+</body>
+</html>

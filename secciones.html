@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revista</title>
+    <link rel="stylesheet" href="/styles/secciones.css">
+</head>
+<body>
+    <header>
+        <h1>Revista</h1>
+    </header>
+    <a class="boton_atras" href="index.html"> <!-- Botón de atrás -->
+        <img class="icono_atras" src="/assets/flecha-atras.png">
+    </a>
+    <div class="titulos">
+        <h3> Secciones </h3>
+        <div class="edicion"> 07/2021 </div> <!-- Edición actual - que se está consultando -->
+    </div>
+    <nav>
+        <ul class="lista_secciones"> <!-- Lista de secciones -->
+            <li class="seccion"> <!-- ítem - Sección -->
+                <div class="titulo_seccion">
+                    <b> Actualidad </b> <!-- Nombre de la sección -->
+                    <button> <!-- opción - editar sección -->
+                        <img class="icono" src="/assets/editar-1.png"/>
+                    </button>
+                    <button> <!-- opción - eliminar sección -->
+                        <img class="icono" src="/assets/cerrar-1.png"/>
+                    </button>
+                </div>
+                <ul>  <!-- ítem - Artículos de la sección -->
+                    <a href="/articulos.html" class="item_seccion">  <!-- ítem - Artículo -->
+                        <li>
+                            <b> Noticias </b>
+                        </li>
+                    </a>
+                    <a href="/articulos.html" class="item_seccion"> <!-- ítem - Artículo -->
+                        <li>
+                            <b> Entrevistas </b>
+                        </li>
+                    </a>
+                </ul>
+            </li>
+            <li class="seccion"> <!-- ítem - Sección -->
+                <div class="titulo_seccion">
+                    <b> Actualidad </b> <!-- Nombre de la sección -->
+                    <button> <!-- opción - editar sección -->
+                        <img class="icono" src="/assets/editar-1.png"/>
+                    </button>
+                    <button> <!-- opción - eliminar sección -->
+                        <img class="icono" src="/assets/cerrar-1.png"/>
+                    </button>
+                </div>
+                <ul>  <!-- ítem - Artículos de la sección -->
+                    <a href="/articulos.html" class="item_seccion">  <!-- ítem - Artículo -->
+                        <li>
+                            <b> Noticias </b>
+                        </li>
+                    </a>
+                    <a href="/articulos.html" class="item_seccion">  <!-- ítem - Artículo -->
+                        <li>
+                            <b> Entrevistas </b>
+                        </li>
+                    </a>
+                </ul>
+            </li>
+            <button class="agregar_seccion"> <!-- Botón de agregar sección -->
+                <li>
+                    <img class="icono" src="/assets/agregar.png"/>
+                </li>
+            </button>
+        </ul>
+    </nav>
+</body>
+</html>
