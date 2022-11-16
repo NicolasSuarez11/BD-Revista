@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Revista-Ediciones</title>
+    <title>Revista-Secciones</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
@@ -12,29 +12,24 @@
     <div class="row">
       <form>
         <h1>REVISTA</h1>
-        <h2>Ediciones</h2>
+        <h2>Secciones</h2>
         <div class="form-group">
-          <label># de Edicion</label>
-          <input type="text" placeholder="Numero..." class="form-control" id="numeroE">
-        </div>
-        <div class="form-group">
-          <label>Fecha de Edicion</label>
-          <input type="text" placeholder="DD/MM/YY" class="form-control" id="fechaE">
+          <label>Nombre</label>
+          <input type="text" placeholder="nombre de la seccion..." class="form-control" id="nombreS">
         </div>
 
-        <button class="btn btn-info" id="botonE" onclick="guardarEdicion()">ENVIAR</button>
+        <button class="btn btn-info" id="botonS" onclick="guardarSeccion()">ENVIAR</button>
 
         <table class="table my-3">
           <thead class="thead-dark">
             <tr>
               <th scope="col">ID</th>
-              <th scope="col"># de Edicion</th>
-              <th scope="col">Fecha de Edicion</th>
+              <th scope="col">Seccion</th>
               <th scope="col">Eliminar</th>
               <th scope="col">Editar</th>
             </tr>
           </thead>
-          <tbody id="tablaEdicion"></tbody>
+          <tbody id="tablaSeccion"></tbody>
         </table>
 
       </form>

@@ -1,12 +1,12 @@
 function guardarEdicion () {
     db.collection("Ediciones").add({
-        nombre: document.getElementById("nombre").value,
-        apellido: document.getElementById("apellido").value
+        numero: document.getElementById("numeroE").value,
+        fecha: document.getElementById("fechaE").value
     })
     .then((docRef) => {
         alert("Registro exitoso")
-        document.getElementById("nombre").value = "";
-        document.getElementById("apellido").value = "";
+        document.getElementById("numeroE").value = "";
+        document.getElementById("fechaE").value = "";
     })
     .catch((error) => {
         alert("Error en el registro")
@@ -16,11 +16,11 @@ function guardarEdicion () {
 
 function guardarSeccion () {
     db.collection("Secciones").add({
-        nombre: document.getElementById("name").value,
-        apellido: document.getElementById("last").value
+        nombre: document.getElementById("nombreS").value
     })
     .then((docRef) => {
         alert("Registro exitoso")
+        document.getElementById("nombreS").value = "";
     })
     .catch((error) => {
         alert("Error en el registro")
