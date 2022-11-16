@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Revista</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
     <header>
         <h1>Revista</h1>
     </header>
     <a class="boton_atras" href="#"> <!-- Botón de atrás -->
-        <img class="icono_atras" src="assets/flecha-atras.png">
+        <img class="icono_atras" src="/assets/flecha-atras.png">
     </a>
     <div class="titulos">
         <h3> Ediciones </h3>
@@ -22,13 +22,13 @@
             <li class="item_ediciones"> <!-- ítem - Edición -->
                 <a href="/secciones.html"> 02 / 2021 </a> <!-- Fecha de la edición -->
                 <button id="myBtn" class="boton_opciones"> <!-- opción - editar -->
-                    <img class="icono" src="assets/editar.png"/>
+                    <img class="icono" src="/assets/editar.png"/>
                 </button>
 
                 <!-- Editar -->
                 <div id="myModal" class="modal"> <!-- Contenido del modal - editar -->
                     <div class="modal-content"> 
-                        <span class="close" class="icono" src="assets/cerrar.png">&times;</span>                        
+                        <span class="close" class="icono" src="/assets/cerrar.png">&times;</span>                        
                         <form class="edit">
                             <div class="edit_1">
                                 <label class="titulo_label">Edición</label><br> 
@@ -54,17 +54,34 @@
                             </div>
                             <div class="botones"> <!-- Botones de gurdar/cancelar -->
                                 <input type="submit" value="Cancelar">
-                                <input type="button" value="Guardar">
+                                <input type="submit" value="Guardar">
                             </div>
                         </form>
                     </div>
                 </div> 
-                <img class="icono" src="assets/cerrar.png"/> 
+                <img class="icono" src="/assets/cerrar.png"/> 
             </li>
             <li>
-                <button class="agregar"> <!-- Botón de agregar edición -->
-                    <img class="icono" src="assets/agregar.png"/>
+                <button id="btn_agregar" class="agregar"> <!-- Botón de agregar edición -->
+                    <img class="icono" src="/assets/agregar.png"/>
                 </button>
+
+                <!-- Agregar -->
+                <div id="myModal_agregar" class="modal"> <!-- Contenido del modal - agregar -->
+                    <div class="modal-content"> 
+                        <span class="close_agregar" class="icono" src="/assets/cerrar.png">&times;</span>                        
+                        <form class="edit">
+                            <div class="edit_1">
+                                <label class="titulo_label">Edición</label><br> 
+                                <input type="date">
+                            </div>
+                            <div class="botones"> <!-- Botones de gurdar/cancelar -->
+                                <input type="submit" value="Cancelar">
+                                <input type="submit" value="Guardar">
+                            </div>
+                        </form>
+                    </div>
+                </div> 
             </li>
         </ul>
     </nav>
@@ -74,15 +91,25 @@
         var modal = document.getElementById("myModal");
         var btn = document.getElementById("myBtn");
         var span = document.getElementsByClassName("close")[0];
+        var btn_agregar = document.getElementById("btn_agregar");
+        var modal_agregar = document.getElementById("myModal_agregar");
+        var span_agregar = document.getElementsByClassName("close_agregar")[0];
 
         // When the user clicks on the button, open the modal
         btn.onclick = function() {
         modal.style.display = "block";
         }
+        //Click en botón agregar
+        btn_agregar.onclick = function() {
+            modal_agregar.style.display = "block";
+        }
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
         modal.style.display = "none";
+        }
+        span_agregar.onclick = function() {
+        modal_agregar.style.display = "none";
         }
 
         // When the user clicks anywhere outside of the modal, close it
@@ -93,5 +120,29 @@
         } 
     </script>
 
+    <!--Script de conexion con la BD-->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        import { } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js"
+        import { } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js"
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDoOj9EL2SxVMKp8R_Xocph6i3ha2BF23I",
+          authDomain: "bd-revista.firebaseapp.com",
+          projectId: "bd-revista",
+          storageBucket: "bd-revista.appspot.com",
+          messagingSenderId: "552882073421",
+          appId: "1:552882073421:web:24b5925788381fd195d104"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
+
+    <script src="app.js" type="module"></script>
 </body>
 </html>
