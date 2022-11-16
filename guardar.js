@@ -1,12 +1,12 @@
 function guardarEdicion () {
     db.collection("Ediciones").add({
-        nombre: document.getElementById("name").value,
-        apellido: document.getElementById("last").value
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value
     })
     .then((docRef) => {
         alert("Registro exitoso")
-        document.getElementById("name").value = "";
-        document.getElementById("last").value = "";
+        document.getElementById("nombre").value = "";
+        document.getElementById("apellido").value = "";
     })
     .catch((error) => {
         alert("Error en el registro")

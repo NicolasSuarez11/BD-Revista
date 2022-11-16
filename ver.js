@@ -18,7 +18,7 @@ db.collection("Ediciones").onSnapshot((querySnapshot) => {
               <td>${doc.data().nombre}</td>
               <td>${doc.data().apellido}</td>
               <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
-              <td><button class="btn btn-warning">Editar</button></td>
+              <td><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().nombre}','${doc.data().apellido}')">Editar</button></td>
         </tr>
         `
     });
