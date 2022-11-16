@@ -1,4 +1,4 @@
-function guardarEdicion () {
+function guardarEdicion() {
     db.collection("Ediciones").add({
         numero: document.getElementById("numeroE").value,
         fecha: document.getElementById("fechaE").value
@@ -14,7 +14,7 @@ function guardarEdicion () {
     });
 }
 
-function guardarSeccion () {
+function guardarSeccion() {
     db.collection("Secciones").add({
         nombre: document.getElementById("nombreS").value
     })
@@ -27,7 +27,7 @@ function guardarSeccion () {
     });
 }
 
-function guardarArticulo () {
+function guardarArticulo() {
     db.collection("Articulos").add({
         nombre: document.getElementById("name").value,
         apellido: document.getElementById("last").value
