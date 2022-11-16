@@ -6,3 +6,20 @@ function ver() {
         });
     });
 }
+
+var tabla = document.getElementById("tabla");
+db.collection("Ediciones").onSnapshot((querySnapshot) => {
+    tabla.innerHTML = "";
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data().nombre}`);
+        tabla.innerHTML += `
+        <tr>
+              <th scope="row">${doc.id}</th>
+              <td>${doc.data().nombre}</td>
+              <td>${doc.data().apellido}</td>
+              <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
+              <td><button class="btn btn-warning">Editar</button></td>
+        </tr>
+        `
+    });
+});
