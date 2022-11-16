@@ -156,3 +156,6 @@ header {
 .boton_borrar input:hover {
     background-color: #838383;
 }
+.hidden {
+    display: none;
+}
