@@ -11,6 +11,18 @@
     <div id="app">
         <button id="button-login">Login con Google</button>
         <button id="button-logout" class="hidden">Cerrar sesion</button>
+
+        <form id="todo-form">
+            <div id="user-info"></div>
+            <input 
+              type="text" 
+              id="todo-input" 
+              placeholder="Nuevo todo ..." 
+              autocomplete="off" 
+            />
+        </form>
+
+        <div id="todos-container"></div>
     </div>
     <!--Script de conexion con la BD-->
     <script type="module">
