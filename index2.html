@@ -1,50 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Revista</title>
-    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div id="app">
-        <button id="button-login">Login con Google</button>
-        <button id="button-logout" class="hidden">Cerrar sesion</button>
-
-        <form id="todo-form">
-            <div id="user-info"></div>
-            <input 
-              type="text" 
-              id="todo-input" 
-              placeholder="Nuevo todo ..." 
-              autocomplete="off" 
-            />
-        </form>
-
-        <div id="todos-container"></div>
-    </div>
-    <!--Script de conexion con la BD-->
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-        import { } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js"
-        import { } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js"
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyDoOj9EL2SxVMKp8R_Xocph6i3ha2BF23I",
-          authDomain: "bd-revista.firebaseapp.com",
-          projectId: "bd-revista",
-          storageBucket: "bd-revista.appspot.com",
-          messagingSenderId: "552882073421",
-          appId: "1:552882073421:web:24b5925788381fd195d104"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-      </script>
-
-    <script src="app.js" type="module"></script>
+    
 </body>
 </html>
