@@ -43,33 +43,86 @@ function guardarEdicion () {
     });
 }
 
+// SECCIONES
+
+function guardarSeccion () {
+    var tipo = document.getElementById('tipo').value;
+
+    db.collection("Secciones").add({
+        type: tipo
+    })
+    .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        alert("Registro exitoso")
+        document.getElementById('tipo').value = '';
+    })
+    .catch((error) => {
+        console.error("Error adding document: ", error);
+        alert("Error en el registro")
+        
+    });
+}
+
 // <-------------VER TABLA-------------->
 // EDICION
 
 
-
-var tabla = document.getElementById("tabla");
-db.collection("Revista").onSnapshot((querySnapshot) => {
-    tabla.innerHTML = "";
-    querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data().nombre}`);
-        tabla.innerHTML += `
-        <tr>
-              <th scope="row">${doc.id}</th>
-              <td>${doc.data().nombre}</td>
-              <td>${doc.data().apellido}</td>
-              <td><a class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</a></td>
-              <td><button class="btn btn-warning" onclick="editar('${doc.id}','${doc.data().nombre}','${doc.data().apellido}')">Editar</button></td>
-        </tr>
-        `
+function verEdicion() {
+    var tabla = document.getElementById("tabla");
+    db.collection("Revista").onSnapshot((querySnapshot) => {
+        tabla.innerHTML = "";
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data().nombre}`);
+            tabla.innerHTML += `
+            <tr>
+                  <th scope="row">${doc.id}</th>
+                  <td>${doc.data().nombre}</td>
+                  <td>${doc.data().apellido}</td>
+                  <td><a class="btn btn-danger" onclick="eliminarEdicion('${doc.id}')">Eliminar</a></td>
+                  <td><button class="btn btn-warning" onclick="editarEdicion('${doc.id}','${doc.data().nombre}','${doc.data().apellido}')">Editar</button></td>
+            </tr>
+            `
+        });
     });
-});
+}
+
+// SECCIONES
+
+
+function verSeccion() {
+    var tabla = document.getElementById("tabla");
+    db.collection("Secciones").onSnapshot((querySnapshot) => {
+        tabla.innerHTML = "";
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data()}`);
+            tabla.innerHTML += `
+            <tr>
+                  <th scope="row">${doc.id}</th>
+                  <td>${doc.data().type}</td>
+                  <td><a class="btn btn-danger" onclick="eliminarSeccion('${doc.id}')">Eliminar</a></td>
+                  <td><button class="btn btn-warning" onclick="editarSeccion('${doc.id}','${doc.data().type}')">Editar</button></td>
+            </tr>
+            `
+        });
+    });
+}
+
 
 // <-------------BORRAR DOCUMENTO-------------->
 // EDICION
 
-function eliminar(id) {
+function eliminarEdicion(id) {
     db.collection("Revista").doc(id).delete().then(() => {
+        console.log("Document successfully deleted!");
+    }).catch((error) => {
+        console.error("Error removing document: ", error);
+    });
+}
+
+// SECCIONES
+
+function eliminarSeccion(id) {
+    db.collection("Secciones").doc(id).delete().then(() => {
         console.log("Document successfully deleted!");
     }).catch((error) => {
         console.error("Error removing document: ", error);
@@ -79,7 +132,7 @@ function eliminar(id) {
 // <-------------EDITAR DOCUMENTO-------------->
 // EDICION
 
-function editar(id,nombre,apellido) {
+function editarEdicion(id,nombre,apellido) {
 
     document.getElementById('nombre').value = nombre;
     document.getElementById('apellido').value = apellido;
@@ -102,6 +155,37 @@ function editar(id,nombre,apellido) {
             boton.innerHTML = 'ENVIAR';
             document.getElementById('nombre').value = '';
             document.getElementById('apellido').value = '';
+            window.location.reload()
+            alert("Cambios aplicados")
+        })
+        .catch((error) => {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+    }
+}
+
+// SECCIONES
+
+function editarSeccion(id,tipo) {
+
+    document.getElementById('tipo').value = tipo;
+    var boton = document.getElementById('boton');
+    boton.innerHTML = 'Editar';
+
+    boton.onclick = function(){
+        var washingtonRef = db.collection("Secciones").doc(id);
+        // Set the "capital" field of the city 'DC'
+
+        var tipo = document.getElementById('tipo').value;
+
+        return washingtonRef.update({
+            type: tipo
+        })
+        .then(() => {
+            console.log("Document successfully updated!");
+            boton.innerHTML = 'ENVIAR';
+            document.getElementById('tipo').value = '';
             window.location.reload()
             alert("Cambios aplicados")
         })
