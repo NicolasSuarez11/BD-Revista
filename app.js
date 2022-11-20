@@ -63,6 +63,38 @@ function guardarSeccion () {
     });
 }
 
+// ARTICULOS
+
+function guardarArticulo () {
+    var titulo = document.getElementById('titulo').value;
+    var texto = document.getElementById('texto').value;
+    var link = document.getElementById('link').value;
+    var fecha = document.getElementById('fecha').value;
+    var seccion = document.getElementById('seccion').value;
+
+    db.collection("Articulos").add({
+        title: titulo,
+        text: texto,
+        link: link,
+        date: fecha,
+        section: seccion
+    })
+    .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        alert("Registro exitoso")
+        document.getElementById('titulo').value = '';
+        document.getElementById('texto').value = '';
+        document.getElementById('link').value = '';
+        document.getElementById('fecha').value = '';
+        document.getElementById('seccion').value = '';
+    })
+    .catch((error) => {
+        console.error("Error adding document: ", error);
+        alert("Error en el registro")
+        
+    });
+}
+
 // <-------------VER TABLA-------------->
 // EDICION
 
@@ -107,6 +139,31 @@ function verSeccion() {
     });
 }
 
+// ARTICULOS
+
+
+function verArticulo() {
+    var tabla = document.getElementById("tabla");
+    db.collection("Articulos").onSnapshot((querySnapshot) => {
+        tabla.innerHTML = "";
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data()}`);
+            tabla.innerHTML += `
+            <tr>
+                  <th scope="row">${doc.id}</th>
+                  <td>${doc.data().title}</td>
+                  <td>${doc.data().text}</td>
+                  <td>${doc.data().link}</td>
+                  <td>${doc.data().date}</td>
+                  <td>${doc.data().section}</td>
+                  <td><a class="btn btn-danger" onclick="eliminarArticulo('${doc.id}')">Eliminar</a></td>
+                  <td><button class="btn btn-warning" onclick="editarArticulo('${doc.id}','${doc.data().title}','${doc.data().text}','${doc.data().link}','${doc.data().date}','${doc.data().section}')">Editar</button></td>
+            </tr>
+            `
+        });
+    });
+}
+
 
 // <-------------BORRAR DOCUMENTO-------------->
 // EDICION
@@ -123,6 +180,16 @@ function eliminarEdicion(id) {
 
 function eliminarSeccion(id) {
     db.collection("Secciones").doc(id).delete().then(() => {
+        console.log("Document successfully deleted!");
+    }).catch((error) => {
+        console.error("Error removing document: ", error);
+    });
+}
+
+// ARTICULOS
+
+function eliminarArticulo(id) {
+    db.collection("Articulos").doc(id).delete().then(() => {
         console.log("Document successfully deleted!");
     }).catch((error) => {
         console.error("Error removing document: ", error);
@@ -186,6 +253,53 @@ function editarSeccion(id,tipo) {
             console.log("Document successfully updated!");
             boton.innerHTML = 'ENVIAR';
             document.getElementById('tipo').value = '';
+            window.location.reload()
+            alert("Cambios aplicados")
+        })
+        .catch((error) => {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+    }
+}
+
+// ARTICULOS
+
+function editarArticulo(id,titulo,texto,link,fecha,seccion) {
+
+    document.getElementById('titulo').value = titulo;
+    document.getElementById('texto').value = texto;
+    document.getElementById('link').value = link;
+    document.getElementById('fecha').value = fecha;
+    document.getElementById('seccion').value = seccion;
+    var boton = document.getElementById('boton');
+    boton.innerHTML = 'Editar';
+
+    boton.onclick = function(){
+        var washingtonRef = db.collection("Articulos").doc(id);
+        // Set the "capital" field of the city 'DC'
+
+        var titulo = document.getElementById('titulo').value;
+        var texto = document.getElementById('texto').value;
+        var link = document.getElementById('link').value;
+        var fecha = document.getElementById('fecha').value;
+        var seccion = document.getElementById('seccion').value;
+
+        return washingtonRef.update({
+            title: titulo,
+            text: texto,
+            link: link,
+            date: fecha,
+            section: seccion
+        })
+        .then(() => {
+            console.log("Document successfully updated!");
+            boton.innerHTML = 'ENVIAR';
+            document.getElementById('titulo').value = '';
+            document.getElementById('texto').value = '';
+            document.getElementById('link').value = '';
+            document.getElementById('fecha').value = '';
+            document.getElementById('seccion').value = '';
             window.location.reload()
             alert("Cambios aplicados")
         })

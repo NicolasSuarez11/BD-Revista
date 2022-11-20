@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revista</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <!--SECCIONES DONDE SE INGRESAN LOS DATOS-->
+    <h1>ARTICULOS</h1>
+    <input type="text" id="titulo" placeholder="Titulo..." class="form-control my-3">
+    <input type="text" id="texto" placeholder="Texto..." class="form-control my-3">
+    <input type="text" id="link" placeholder="Link..." class="form-control my-3">
+    <input type="text" id="fecha" placeholder="Fecha..." class="form-control my-3">
+    <input type="text" id="seccion" placeholder="Seccion..." class="form-control my-3">
+    <a class="btn btn-info" id="boton" onclick="guardarArticulo()">Guardar</a>
+    <!--TABLA DONDE SE MUESTRAN LOS RESULTADOS-->
+    <a class="btn btn-info" id="boton" onclick="verArticulo()">Mostrar</a>
+    <table class="table my-3">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Texto</th>
+            <th scope="col">Link</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Seccion</th>
+            <th scope="col">Eliminar</th>
+            <th scope="col">Editar</th>
+          </tr>
+        </thead>
+        <tbody id="tabla">
+        </tbody>
+      </table>
+  </div>
+  
+</body>
+<!--IMPORTAMOS A BOOTSTRAP-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<!--IMPORTAMOS FIREBASE-->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<!--IMPORTAMOS JS-->
+<script src="app.js"></script>
+</html>
