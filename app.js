@@ -23,18 +23,15 @@ const db = firebase.firestore();
 // EDICION
 
 function guardarEdicion () {
-    var nombre = document.getElementById('nombre').value;
-    var apellido = document.getElementById('apellido').value;
+    var fecha = document.getElementById('fechaE').value;
 
-    db.collection("Revista").add({
-        nombre: nombre,
-        apellido: apellido
+    db.collection("Ediciones").add({
+        date: fecha
     })
     .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
         alert("Registro exitoso")
-        document.getElementById('nombre').value = '';
-        document.getElementById('apellido').value = '';
+        document.getElementById('fechaE').value = '';
     })
     .catch((error) => {
         console.error("Error adding document: ", error);
@@ -101,17 +98,16 @@ function guardarArticulo () {
 
 function verEdicion() {
     var tabla = document.getElementById("tabla");
-    db.collection("Revista").onSnapshot((querySnapshot) => {
+    db.collection("Ediciones").onSnapshot((querySnapshot) => {
         tabla.innerHTML = "";
         querySnapshot.forEach((doc) => {
-            console.log(`${doc.id} => ${doc.data().nombre}`);
+            console.log(`${doc.id} => ${doc.data()}`);
             tabla.innerHTML += `
             <tr>
                   <th scope="row">${doc.id}</th>
-                  <td>${doc.data().nombre}</td>
-                  <td>${doc.data().apellido}</td>
+                  <td>${doc.data().date}</td>
                   <td><a class="btn btn-danger" onclick="eliminarEdicion('${doc.id}')">Eliminar</a></td>
-                  <td><button class="btn btn-warning" onclick="editarEdicion('${doc.id}','${doc.data().nombre}','${doc.data().apellido}')">Editar</button></td>
+                  <td><button class="btn btn-warning" onclick="editarEdicion('${doc.id}','${doc.data().date}')">Editar</button></td>
             </tr>
             `
         });
@@ -169,7 +165,7 @@ function verArticulo() {
 // EDICION
 
 function eliminarEdicion(id) {
-    db.collection("Revista").doc(id).delete().then(() => {
+    db.collection("Ediciones").doc(id).delete().then(() => {
         console.log("Document successfully deleted!");
     }).catch((error) => {
         console.error("Error removing document: ", error);
@@ -199,29 +195,25 @@ function eliminarArticulo(id) {
 // <-------------EDITAR DOCUMENTO-------------->
 // EDICION
 
-function editarEdicion(id,nombre,apellido) {
+function editarEdicion(id,fecha) {
 
-    document.getElementById('nombre').value = nombre;
-    document.getElementById('apellido').value = apellido;
+    document.getElementById('fechaE').value = fecha;
     var boton = document.getElementById('boton');
     boton.innerHTML = 'Editar';
 
     boton.onclick = function(){
-        var washingtonRef = db.collection("Revista").doc(id);
+        var washingtonRef = db.collection("Ediciones").doc(id);
         // Set the "capital" field of the city 'DC'
 
-        var nombre = document.getElementById('nombre').value;
-        var apellido = document.getElementById('apellido').value;
+        var fecha = document.getElementById('fechaE').value;
 
         return washingtonRef.update({
-            nombre: nombre,
-            apellido: apellido
+            date: fecha
         })
         .then(() => {
             console.log("Document successfully updated!");
             boton.innerHTML = 'ENVIAR';
-            document.getElementById('nombre').value = '';
-            document.getElementById('apellido').value = '';
+            document.getElementById('fechaE').value = '';
             window.location.reload()
             alert("Cambios aplicados")
         })
