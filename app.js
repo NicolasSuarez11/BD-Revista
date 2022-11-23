@@ -104,10 +104,10 @@ function verEdicion() {
             console.log(`${doc.id} => ${doc.data()}`);
             tabla.innerHTML += `
             <tr>
-                  <th scope="row">${doc.id}</th>
                   <td>${doc.data().date}</td>
+                  <td><a class="btn btn-info" style="$colors=red" onclick=window.location.replace("secciones.html")>Ver</td>
+                  <td><button class="btn btn-primary" onclick="editarEdicion('${doc.id}','${doc.data().date}')">Editar</button></td>
                   <td><a class="btn btn-danger" onclick="eliminarEdicion('${doc.id}')">Eliminar</a></td>
-                  <td><button class="btn btn-warning" onclick="editarEdicion('${doc.id}','${doc.data().date}')">Editar</button></td>
             </tr>
             `
         });
@@ -116,19 +116,18 @@ function verEdicion() {
 
 // SECCIONES
 
-
 function verSeccion() {
     var tabla = document.getElementById("tabla");
-    db.collection("Secciones").onSnapshot((querySnapshot) => {
+        db.collection("Secciones").onSnapshot((querySnapshot) => {
         tabla.innerHTML = "";
         querySnapshot.forEach((doc) => {
             console.log(`${doc.id} => ${doc.data()}`);
             tabla.innerHTML += `
             <tr>
-                  <th scope="row">${doc.id}</th>
                   <td>${doc.data().type}</td>
+                  <td><a class="btn btn-info" style="$colors=red" onclick=window.location.replace("articulos.html")>Ver</td>
+                  <td><button class="btn btn btn-primary" onclick="editarSeccion('${doc.id}','${doc.data().type}')">Editar</button></td>
                   <td><a class="btn btn-danger" onclick="eliminarSeccion('${doc.id}')">Eliminar</a></td>
-                  <td><button class="btn btn-warning" onclick="editarSeccion('${doc.id}','${doc.data().type}')">Editar</button></td>
             </tr>
             `
         });
@@ -136,7 +135,6 @@ function verSeccion() {
 }
 
 // ARTICULOS
-
 
 function verArticulo() {
     var tabla = document.getElementById("tabla");
@@ -146,14 +144,12 @@ function verArticulo() {
             console.log(`${doc.id} => ${doc.data()}`);
             tabla.innerHTML += `
             <tr>
-                  <th scope="row">${doc.id}</th>
+                <td>${doc.data().date}</td>
+                <td>${doc.data().section}</td>
                   <td>${doc.data().title}</td>
                   <td>${doc.data().text}</td>
-                  <td>${doc.data().link}</td>
-                  <td>${doc.data().date}</td>
-                  <td>${doc.data().section}</td>
+                  <td><button class="btn btn-primary" onclick="editarArticulo('${doc.id}','${doc.data().title}','${doc.data().text}','${doc.data().link}','${doc.data().date}','${doc.data().section}')">Editar</button></td>
                   <td><a class="btn btn-danger" onclick="eliminarArticulo('${doc.id}')">Eliminar</a></td>
-                  <td><button class="btn btn-warning" onclick="editarArticulo('${doc.id}','${doc.data().title}','${doc.data().text}','${doc.data().link}','${doc.data().date}','${doc.data().section}')">Editar</button></td>
             </tr>
             `
         });
